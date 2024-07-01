@@ -1,0 +1,1206 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/5cb1eda5d5.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="/style.css">
+    <title>Guía de instalación de gitlab-ce</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row d-flex align-items-center publicity">
+            <div class="col col-9">
+                <h4>Instituto Superior de Educación Rural</h4>
+            </div>
+            <div class="col col-1 information">
+                <p>
+                    <a href="https://docs.gitlab.com/?tab=Install" target="_blank">Documentación oficial</a>
+                </p>
+            </div>
+        </div>
+
+        <!---------------------FOOTER----------------------------------->
+
+        <div class="row text-center d-flex align-items-center">
+            <div class="col col-2 logoContainer">
+                <img src="/logo.png" alt="">
+                <img class="logo" src="/iser.png" alt="">
+            </div>
+            <div class="col col-4"></div>
+            <div class="col col-1 elements">
+                <div class="">
+                    <button class="button">Productos</button>
+                </div>
+            </div>
+            <div class="col col-1 servicios">
+                <div class="">
+                    <button class="button">
+                        Servicios
+                    </button>
+                </div>
+            </div>
+            <div class="col col-1 elements">
+                <div>
+                    <button class="button"> Desarrolladores</button>
+                </div>
+            </div>
+            <div class="col col-1"></div>
+            <div class="col col-1">
+                <div>
+                    <button class="buttonInscribete">
+                        ¡INSCRIBETE!
+                    </button>
+                </div>
+            </div>
+        </div>
+        <hr>
+
+        <!-------------------TITULO------------------------->
+
+        <div class="row text-center d-flex align-items-center title">
+            <div class="col-12">
+                <h1>
+                    Guía de instalación de gitlab-ce con postgresql no empaquetado
+                </h1>
+            </div>
+        </div>
+        <hr>
+        <br>
+        <!-------------------BODY------------------------->
+        <div class="row row-3 ">
+            <div class="col col-3">
+                <div class="card contenido contenidoGitlab">
+                    <div class="card-body">
+                        <h3>Contenido Gitlab</h3>
+                        <br>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                <h6>Paso #1: </h6>
+                                <p><a href="#paso1">Instalar las dependencias</a></p>
+                            </li>
+                            <li class="list-group-item">
+                                <h6>Paso #2: </h6>
+                                <p><a href="#paso2">Instalar Gitlab</a></p>
+                            </li>
+                            <li class="list-group-item">
+                                <h6>Paso #3: </h6>
+                                <p><a href="#paso3">Ajustar las reglas del firewall</a></p>
+                            </li>
+                            <li class="list-group-item">
+                                <h6>Paso #4: </h6>
+                                <p><a href="#paso4">Editar el archivo de configuración de Gitlab</a></p>
+                            </li>
+                            <li class="list-group-item">
+                                <h6>Paso #5: </h6>
+                                <p><a href="#paso5">Realizar la configuración inicial a través de la interfaz web</a>
+                                </p>
+                            </li>
+                        </ul>
+                        <br>
+                        <h4>Contenido Postgresql</h4>
+                        <br>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                <h6>Paso #1: </h6>
+                                <p>
+                                    <a href="#paso11">
+                                        Instalar lsa dependencias
+                                    </a>
+                                </p>
+                            </li>
+                            <li class="list-group-item">
+                                <h6>Paso #2: </h6>
+                                <p>
+                                    <a href="#paso22">
+                                        Instalar Postgresql-contrib
+                                    </a>
+                                </p>
+                            </li>
+                            <li class="list-group-item">
+                                <h6>Paso #3: </h6>
+                                <p>
+                                    <a href="#paso33">
+                                        Ajustar las reglas del firewall
+                                    </a>
+                                </p>
+                            </li>
+                            <li class="list-group-item">
+                                <h6>Paso #4: </h6>
+                                <p>
+                                    <a href="#paso44">
+                                        Editar el archivo de configuración
+                                    </a>
+                                </p>
+                            </li>
+                            <li class="list-group-item">
+                                <h6>Paso #5: </h6>
+                                <p>
+                                    <a href="#paso55">
+                                        Editar archivo postgresql.conf
+                                    </a>
+                                </p>
+                            </li>
+                            <li class="list-group-item">
+                                <h6>Paso #6: </h6>
+                                <p>
+                                    <a href="#paso66">
+                                        Crear la DB y usuario en consola de Postgresql
+                                    </a>
+                                </p>
+                            </li>
+                        </ul>
+                        <br>
+                        <h3>Reconfiguración de Gitlab</h3>
+                        <br>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                <h6>Paso #1: </h6>
+                                <p>
+                                    <a href="#reconfig">
+                                        Reconfiguración de gitlab 
+                                    </a>
+                                </p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+
+            <!---------------TUTORIAL----------------->
+            <div class="col col-7 scrollable-content">
+                <div class="card tutorial">
+                    <div class="card-body">
+                        <h3>Tutorial</h3>
+                        <h5>Introducción</h5>
+                        <p>GitLab es una aplicación de código abierto que se utiliza principalmente para alojar
+                            repositorios de Git,
+                            con funciones adicionales relacionadas con el desarrollo, como el seguimiento de problemas.
+                            Está diseñada
+                            para alojarse utilizando su propia infraestructura y ofrece flexibilidad para implementarse
+                            como un almacén
+                            de repositorio interno para su equipo de desarrollo, una forma pública de interactuar con
+                            los usuarios o
+                            un medio para que los colaboradores alojen sus propios proyectos.
+
+                            El proyecto GitLab le permite crear una instancia de GitLab en su propio hardware con un
+                            mecanismo de
+                            instalación mínimo. Esta guía le enseñará cómo instalar y configurar GitLab Community
+                            Edition en un servidor Ubuntu.
+                            Además, le enseñará a utilizar dos servidores diferentes en el cual alojar gitlab y
+                            postgresql respectivamente.
+                        </p>
+                        <hr>
+                        <br>
+                        <h4>Requisitos previos para el servidor gitlab</h4>
+                        <div class="alerta">
+                            Si está utilizando la versión 16.04 o inferior de Ubuntu,
+                            le recomendamos que actualice a una versión más reciente,
+                            ya que Ubuntu ya no brinda soporte para estas versiones.
+                        </div>
+                        <br>
+                        <p>Para seguir esta guía, necesitará: </p>
+                        <ul>
+                            <li>Un servidor que ejecute Ubuntu.
+                            </li>
+                            <li>
+                                Un usuario root con sudoprivilegios.
+                            </li>
+                            <li>
+                                Firewall activo.
+                            </li>
+                        </ul>
+                        <br>
+                        <p>
+                            Los requisitos de hardware publicados de gitlab recomiendan utilizar
+                            un servidor con un mínimo de:
+                        </p>
+                        <ul>
+                            <li>
+                                4 núcleos para tu CPU.
+                            </li>
+                            <li>
+                                8 GB de RAM para memoria.
+                            </li>
+                            <li>
+                                50 GB de almacenamiento.
+                            </li>
+                            <p>Se recomienda usar volúmenes LVM para futura expansión.</p>
+                        </ul>
+
+                        <p>
+                            Aunque es posible que funcione disminuyendo los requisitos, pero va a ser poco funcional.
+                        </p>
+
+                        <p>Si tienes un nombre de dominio asegúrate de que apunte al servidor gitlab</p>
+
+                        <p>Si requieres el servidor para proyectos grandes debes tener una IP pública
+                            para tu servidor, ya que asi se puede acceder a él desde intenet.
+                        </p>
+                        <br>
+                        <h4>Requisitos previos para servidor Postgresql</h4>
+                        <ul>
+                            <li>
+                                Un servidor Ubuntu.
+                            </li>
+                            <li>
+                                2 núcleos para tu CPU.
+                            </li>
+                            <li>
+                                2 GB de RAM para memoria.
+                            </li>
+                            <li>
+                                12 GB de almacenamiento.
+                            </li>
+                        </ul>
+                        <h4 id="paso1">Paso 1: Instalar las dependencias.</h4>
+                        <p>
+                            Antes de instalar Gitab, y cualquier otro programa, es importante actualizar repositorios,
+                            para asi obtener las versiones mas recientes y no tener conflictos de instalación a futuro.
+                        </p>
+
+                        <div class="consola">
+                            <div class="cabecera"></div>
+                            <div class="comando">
+                                <div class="peso">$</div>
+                                <p>
+                                    sudo apt update
+                                </p>
+                            </div>
+                        </div>
+
+                        <br>
+                        <img class="pasopaso" src="/1.png" alt="">
+                        <div class="consola">
+                            <div class="cabecera"></div>
+                            <div class="comando">
+                                <div class="peso">$</div>
+                                <p>
+                                    sudo apt upgrade -y
+                                </p>
+                            </div>
+                        </div>
+                        <br>
+                        <img class="pasopaso" src="/2.png" alt="">
+                        <p>Luego instale las dependencias ingresando este comando: </p>
+                        <div class="consola">
+                            <div class="cabecera"></div>
+                            <div class="comando">
+                                <div class="peso">$</div>
+                                <p>
+                                    sudo apt install ca-certificates curl openssh-server postfix tzdata perl
+                                </p>
+                            </div>
+                        </div>
+
+                        <br>
+
+                        <img class="pasopaso" src="/3.png" alt="">
+
+                        <p>
+                            Probablemente ya tengas parte de este software instalado.
+                            Para la <b>postfix</b> instalación, seleccione <b>Sitio de Internet</b>
+                            cuando se le solicite. En la siguiente pantalla, ingrese
+                            el nombre de dominio de su servidor para configurar cómo
+                            el sistema enviará el correo.
+                        </p>
+                        <img class="pasopaso" src="/4.png" alt="">
+                        <br><br>
+                        <img class="pasopaso" src="/5.png" alt="">
+                        <p>Ahora que tienes las dependencias instaladas, estás listo
+                            para instalar GitLab.
+                        </p>
+                        <h4 id="paso2">Paso 2: Instalar Gitlab</h4>
+                        <p>
+                            Con las dependencias implementadas, puedes instalar GitLab.
+                            Este proceso aprovecha un script de instalación para configurar
+                            su sistema con los repositorios de GitLab.
+                        </p>
+                        <p>Primero, vaya al /tmp directorio:</p>
+                        <div class="consola">
+                            <div class="cabecera"></div>
+                            <div class="comando">
+                                <div class="peso">$</div>
+                                <p>
+                                    cd /tmp
+                                </p>
+                            </div>
+                        </div>
+                        <br>
+                        <img class="pasopaso" src="/6.png" alt="">
+                        <p>
+                            Luego descargue el script de instalación:
+                        </p>
+                        <div class="consola">
+                            <div class="cabecera"></div>
+                            <div class="comando">
+                                <div class="peso">$</div>
+                                <p>
+                                    curl -LO
+                                    https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.deb.sh
+                                </p>
+                            </div>
+                        </div>
+                        <br>
+                        <img class="pasopaso" src="/7.png" alt="">
+                        <p>No dude en examinar el script descargado para asegurarse de que
+                            se sienta cómodo con las acciones que realizará. También puede
+                            encontrar una versión alojada del script en las instrucciones
+                            de instalación de GitLab :
+                        </p>
+                        <div class="consola">
+                            <div class="cabecera"></div>
+                            <div class="comando">
+                                <div class="peso">$</div>
+                                <p>
+                                    less /tmp/script.deb.sh
+                                </p>
+                            </div>
+                        </div>
+                        <br>
+                        <p>
+                            Una vez que esté satisfecho con la seguridad del script, ejecute el instalador:
+                        </p>
+                        <div class="consola">
+                            <div class="cabecera"></div>
+                            <div class="comando">
+                                <div class="peso">$</div>
+                                <p>
+                                    sudo bash /tmp/script.deb.sh
+                                </p>
+                            </div>
+                        </div>
+                        <br>
+                        <img src="/8.png" alt="" class="pasopaso">
+                        <p>
+                            El script configura su servidor para utilizar los repositorios
+                            mantenidos por GitLab. Esto le permite administrar GitLab con las
+                            mismas herramientas de administración de paquetes que usa para los
+                            otros paquetes del sistema.
+                        </p>
+                        <p>
+                            Una vez completado esto, puede instalar la aplicación GitLab real con apt:
+                        </p>
+                        <div class="consola">
+                            <div class="cabecera"></div>
+                            <div class="comando">
+                                <div class="peso">$</div>
+                                <p>
+                                    sudo apt install gitlab-ce
+                                </p>
+                            </div>
+                        </div>
+                        <br>
+                        <img src="/9.png" alt="" class="pasopaso">
+                        <img src="11.png" alt="" class="pasopaso">
+                        <p>
+                            Esto instala los componentes necesarios en su sistema y puede tardar
+                            algún tiempo en completarse.
+                        </p>
+                        <h4 id="paso3">Paso 3: Ajustar las reglas del firewall</h4>
+                        <p>
+                            Antes de configurar GitLab, debe asegurarse de que las reglas de su
+                            firewall sean lo suficientemente permisivas para permitir el tráfico
+                            web.
+                        </p>
+                        <p>
+                            Habilite el firewall:
+                        </p>
+                        <div class="consola">
+                            <div class="cabecera"></div>
+                            <div class="comando">
+                                <div class="peso">$</div>
+                                <p>
+                                    sudo ufw enable
+                                </p>
+                            </div>
+                        </div>
+                        <br>
+                        <p>
+                            Ahora, habilita los puertos que se van a utlizar:
+                        </p>
+                        <div class="consola">
+                            <div class="cabecera"></div>
+                            <div class="comando">
+                                <div class="peso">$</div>
+                                <p>
+                                    sudo ufw allow http
+                                </p>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="consola">
+                            <div class="cabecera"></div>
+                            <div class="comando">
+                                <div class="peso">$</div>
+                                <p>
+                                    sudo ufw allow https
+                                </p>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="consola">
+                            <div class="cabecera"></div>
+                            <div class="comando">
+                                <div class="peso">$</div>
+                                <p>
+                                    sudo ufw allow OpenSSH
+                                </p>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="consola">
+                            <div class="cabecera"></div>
+                            <div class="comando">
+                                <div class="peso">$</div>
+                                <p>
+                                    sudo ufw allow 5432
+                                </p>
+                            </div>
+                        </div>
+                        <br>
+                        <img src="/10.png" alt="" class="pasopaso">
+                        <p>
+                            Dado que GitLab es una aplicación web, debe permitir el acceso HTTP.
+                            Debido a que aprovechará la capacidad de GitLab para solicitar y
+                            habilitar un certificado TLS/SSL gratuito de Let's Encrypt , permita
+                            también el acceso HTTPS.
+                        </p>
+                        <p>
+                            Puedes verificar ufw statusnuevamente para asegurarte de que hayas otorgado acceso al menos
+                            a estos dos servicios:
+                        </p>
+                        <div class="consola">
+                            <div class="cabecera"></div>
+                            <div class="comando">
+                                <div class="peso">$</div>
+                                <p>
+                                    sudo ufw status
+                                </p>
+                            </div>
+                        </div>
+                        <br>
+                        <img src="/ufw_status.png" alt="" class="pasopaso">
+                        <p>
+                            Este resultado indica que ahora se puede acceder a la interfaz web de GitLab una vez que
+                            configura la aplicación.
+                        </p>
+                        <h4 id="paso4">Paso 4: Editar el archivo de configuración de Gitlab</h4>
+                        <p>
+                            Antes de poder utilizar la aplicación, actualice el archivo de
+                            configuración y ejecute un comando de reconfiguración. Primero,
+                            abra el archivo de configuración de GitLab con su editor de texto
+                            preferido. Este ejemplo utiliza nano:
+                        </p>
+                        <div class="consola">
+                            <div class="cabecera"></div>
+                            <div class="comando">
+                                <div class="peso">$</div>
+                                <p>
+                                    sudo nano /etc/gitlab/gitlab.rb
+                                </p>
+                            </div>
+                        </div>
+                        <br>
+                        <p>Haga scroll hacia abajo hasta que encuentre la siguiente línea:</p>
+                        <img class="pasopaso" src="1rb.png" alt="">
+                        <p>
+                            En esta línea debes poner el dominio de tu servidor, con el cual
+                            será encontrado a través de la web, por ejemplo <b>https:gitlab.com</b>
+                            o también con la ip del servidor <b>https:192.168.1.100</b>, o en su defecto
+                            <b>http://192.168.1.100</b>, note que no tiene la <b>s</b> en el protocolo
+                            <b>http</b>, ya que solo servirá de manera local, en la máquina donde esté creado el
+                            servidor.
+                        </p>
+                        <br><br>
+                        <p>
+                            Presione 'ctrl + w' y escriba 'letsencrypt' y presione enter para buscar por palabra.
+                        </p>
+
+                        <div class="consola">
+                            <div class="cabecera"></div>
+                            <div class="comando">
+                                <div class="peso">$</div>
+                                <p>
+                                    letsencrypt['contact_emails'] = ['gitlab@example.com']
+                                </p>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="consola">
+                            <div class="cabecera"></div>
+                            <div class="comando">
+                                <div class="peso">$</div>
+                                <p>
+                                    letsencrypt['enable'] = true
+                                </p>
+                            </div>
+                        </div>
+                        <br>
+                        <p>
+                            Esta configuración define una lista de direcciones de correo
+                            electrónico que el proyecto Let's Encrypt puede usar para
+                            comunicarse con usted si hay problemas con su dominio. Se
+                            recomienda descomentar y completar esto para informarse sobre
+                            cualquier problema que pueda ocurrir.
+                        </p>
+                        <img class="pasopaso" src="/2rb.png" alt="">
+                        <br><br>
+                        <p>
+                            Una vez que haya terminado de realizar cambios, guarde y cierre el archivo. Si está
+                            utilizando nano, puede hacerlo presionando CTRL+O, CTRL+X, luego ENTER.
+                        </p>
+                        <br><br>
+                        <p>
+                            Ejecute el siguiente comando para reconfigurar GitLab:
+                        </p>
+                        <div class="consola">
+                            <div class="cabecera"></div>
+                            <div class="comando">
+                                <div class="peso">$</div>
+                                <p>
+                                    sudo gitlab-ctl reconfigure
+                                </p>
+                            </div>
+                        </div>
+                        <img class="pasopaso" src="/14.png" alt="">
+                        <br><br>
+                        <p>
+                            Esto inicializará GitLab utilizando la información que pueda
+                            encontrar sobre su servidor. Este es un proceso completamente
+                            automatizado, por lo que no tendrá que responder ninguna pregunta.
+                            El proceso también configurará un certificado Let's Encrypt para
+                            su dominio.
+                        </p>
+                        <br>
+                        <h3 id="paso5">Paso 5: Realizar la configuración inicial en la interfaz web</h3>
+                        <p>
+                            En este punto ya podrias ingresar al dominio o IP en el navegador y encontrar el login de
+                            Gitlab.
+                        </p>
+                        <p>
+                            Para ingresar, debes copiar la contraseña temporal que <b>solo dura 24 horas</b> para poder
+                            ingresar a la plataforma.
+                        </p>
+                        <img src="/15.png" alt="" class="pasopaso">
+                        <p>
+                            Para copiar la contraseña debe ir a la siguiente ruta y allí encontrarás la clave.
+                        </p>
+                        <div class="consola">
+                            <div class="cabecera"></div>
+                            <div class="comando">
+                                <div class="peso">$</div>
+                                <p>
+                                    nano /etc/gitlab/initial_root_password
+                                </p>
+                            </div>
+                        </div>
+                        <br>
+                        <img src="/16.png" alt="" class="pasopaso">
+
+                        <p>
+                            Dirígete al login e inicia sesión con usuario <b>root</b> y
+                            la <b>contraseña</b> que acabaste de copiar.
+                        </p>
+                        <img src="/17.png" alt="" class="pasopaso">
+                        <p>
+                            Observe que está navegando por protocolo seguro <b>https</b>, pero la
+                            advertencia que aparece ahí es porque no se está utilizando un nombre de dominio
+                            válido, o una IP pública. Sin embargo, si está navegando seguro.
+                        </p>
+                        <p>
+                            Una vez dentro de Gitlab, ve a cambiar la contraseña por una mas corta.
+                            Para eso, ve a <b>editar perfil</b>.
+                        </p>
+                        <img src="/18.png" alt="" class="pasopaso">
+                        <p>
+                            Cambia la contraseña y guarda los cambios. Esto hace que cierre sesión inmediatamente
+                            y te pida iniciar sesión con tu nueva contraseña.
+                        </p>
+
+                        <img src="/19.png" alt="" class="pasopaso">
+                        <br><br><br>
+                        <h3>Instalación y configuración de Postgresql</h3>
+
+                        <h3 id="paso11">Paso 1: Instalar las dependencias</h3>
+                        <p>
+                            Al igual que en el servidor anterior, haga uso de los comandos:
+                        </p>
+                        <div class="consola">
+                            <div class="cabecera"></div>
+                            <div class="comando">
+                                <div class="peso">$</div>
+                                <p>
+                                    sudo apt update upgrade -y
+                                </p>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="consola">
+                            <div class="cabecera"></div>
+                            <div class="comando">
+                                <div class="peso">$</div>
+                                <p>
+                                    sudo apt install openssh-server
+                                </p>
+                            </div>
+                        </div>
+                        <br>
+                        <h3 id="paso22">Paso 2: Instalar Postgresql-contrib</h3>
+                        <p>
+                            Para la versión 17.2 que es la que se está utilizando en esta guía,
+                            se debe utilizar esta versión de Postgresql.
+                        </p>
+                        <div class="consola">
+                            <div class="cabecera"></div>
+                            <div class="comando">
+                                <div class="peso">$</div>
+                                <p>
+                                    sudo apt install Postgresql-contrib
+                                </p>
+                            </div>
+                        </div>
+                        <br>
+                        <img class="pasopaso" src="/install postgresql.png" alt="">
+                        <br><br>
+                        <h3 id="paso33">Paso 3: Ajustar las reglas del firewall</h3>
+                        <p>Active el firewall.</p>
+                        <div class="consola">
+                            <div class="cabecera"></div>
+                            <div class="comando">
+                                <div class="peso">$</div>
+                                <p>
+                                    sudo ufw enable
+                                </p>
+                            </div>
+                        </div>
+                        <br>
+                        <p>
+                            Luego de iniciar el firewall, habilite los siguientes puertos:
+                        </p>
+                        <div class="consola">
+                            <div class="cabecera"></div>
+                            <div class="comando">
+                                <div class="peso">$</div>
+                                <p>
+                                    sudo ufw allow 5432
+                                </p>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="consola">
+                            <div class="cabecera"></div>
+                            <div class="comando">
+                                <div class="peso">$</div>
+                                <p>
+                                    sudo ufw allow OpenSSH
+                                </p>
+                            </div>
+                        </div>
+                        <br>
+                        <h3 id="paso44">Paso 4: Editar el archivo de configuración <b>pg_hba.conf</b></h3>
+                        <img class="pasopaso" src="/abrir configuracion postgres.png" alt="">
+                        <div class="consola">
+                            <div class="cabecera"></div>
+                            <div class="comando">
+                                <div class="peso">$</div>
+                                <p>
+                                    sudo nano /etc/postgresql/16/main/pg_hba.conf
+                                </p>
+                            </div>
+                        </div>
+
+                        <br><br>
+                        <p>
+                            En este archivo se va configurar la base de datos y el usuario para Gitlab.
+                        </p>
+                        <div class="alerta">
+                            El nombre de la base de datos debe ser <b>gitlab</b>, ya que es por este
+                            nombre que Gitlab busca en el servidor de Postgresql. Si usa otro nombre
+                            le va a regenerar error al reconfigurar.
+                        </div>
+                        <br><br>
+                        <img class="pasopaso" src="/agregacion bd.png" alt="">
+                        <br><br>
+                        <img class="pasopaso" src="/agregacion usuario.png" alt="">
+                        <br>
+                        <p>
+                            Asegúrese de poner las lineas exactamente. Si desea que Postgresql
+                            solo escuche en una dirección, debe cambiar <b>0.0.0.0/0</b> por
+                            <b>IP_de_su_servidor_Gitlab/32</b>.
+                        </p>
+                        <br>
+                        <h3 id="paso55">Paso 5: Editar archivo postgresql.conf</h3>
+                        <br>
+                        <img class="pasopaso" src="/abrir conf 2 postgres.png" alt="">
+                        <div class="consola">
+                            <div class="cabecera"></div>
+                            <div class="comando">
+                                <div class="peso">$</div>
+                                <p>
+                                    sudo nano /etc/postgresql/16/main/postgresql.conf
+                                </p>
+                            </div>
+                        </div>
+                        <br>
+                        <img class="pasopaso" src="/lectura ip.png" alt="">
+                        <br>
+                        <p>
+                            Note que en este caso está escuchando todas las direcciones.
+                        </p>
+                        <br>
+                        <h3 id="paso66">Paso 6: Crear la DB y usuario en consola de Postgresql</h3>
+                        <p>
+                            Ingrese a Postgresql.
+                        </p>
+                        <img class="pasopaso" src="/entrar a postgres.png" alt="">
+                        <br><br>
+                        <div class="consola">
+                            <div class="cabecera"></div>
+                            <div class="comando">
+                                <div class="peso">$</div>
+                                <p>
+                                    su postgres
+                                </p>
+                            </div>
+                        </div>
+                        <br>
+                        <p>Ahora si ingrese a la consola de Postgresql.</p>
+                        <img class="pasopaso" src="/entrar a la consola posgres.png" alt="">
+                        <br><br>
+                        <div class="consola">
+                            <div class="cabecera"></div>
+                            <div class="comando">
+                                <div class="peso">$</div>
+                                <p>
+                                    psql
+                                </p>
+                            </div>
+                        </div>
+                        <br>
+                        <p>
+                            Cree la base de datos para Gitlab.
+                        </p>
+                        <img class="pasopaso" src="/base gitlab.png" alt="">
+                        <br><br>
+                        <div class="consola">
+                            <div class="cabecera"></div>
+                            <div class="comando">
+                                <div class="peso">$</div>
+                                <p>
+                                    CREATE DATABASE gitlab;
+                                </p>
+                            </div>
+                        </div>
+                        <br>
+                        <p>
+                            Ahora el usuario para Gitlab.
+                        </p>
+                        <img src="/creacion de usuario.png" alt="" class="pasopaso">
+                        <br><br>
+                        <div class="consola">
+                            <div class="cabecera"></div>
+                            <div class="comando">
+                                <div class="peso">$</div>
+                                <p>
+                                    CREATE USER gitlab WITH PASSWORD 'gitlab';
+                                </p>
+                            </div>
+                        </div>
+                        <br>
+                        <p>
+                            Verifica que se haya creado correctamente la base de datos.
+                        </p>
+                        <img src="/base de datos.png" alt="" class="pasopaso">
+                        <br><br>
+                        <div class="consola">
+                            <div class="cabecera"></div>
+                            <div class="comando">
+                                <div class="peso">$</div>
+                                <p>
+                                    \l
+                                </p>
+                            </div>
+                        </div>
+                        <br>
+                        <p>
+                            Es una ele minúscula.
+                        </p>
+                        <br>
+                        <p>
+                            Ahora con el usuario.
+                        </p>
+                        <img src="/usuario creado.png" alt="" class="pasopaso">
+                        <br><br>
+                        <div class="consola">
+                            <div class="cabecera"></div>
+                            <div class="comando">
+                                <div class="peso">$</div>
+                                <p>
+                                    \du
+                                </p>
+                            </div>
+                        </div>
+                        <br>
+                        <p>
+                            Debes darle todos los permisos al usuario <b>gitlab</b>.
+                        </p>
+                        <img src="/superusuario postgres.png" alt="" class="pasopaso">
+                        <br><br>
+                        <div class="consola">
+                            <div class="cabecera"></div>
+                            <div class="comando">
+                                <div class="peso">$</div>
+                                <p>
+                                    ALTER USER gitlab WITH SUPERUSER;
+                                </p>
+                            </div>
+                        </div>
+                        <br>
+                        <p>
+                            Despues, debes darle todos los permisos al usuario <b>gitlab</b> sobre la base de datos
+                            <b>gitlab</b>.
+                        </p>
+                        <img src="/privilegios de usuario a tabla.png" alt="" class="pasopaso">
+                        <br><br>
+                        <div class="consola">
+                            <div class="cabecera"></div>
+                            <div class="comando">
+                                <div class="peso">$</div>
+                                <p>
+                                    GRANT ALL PRIVILEGES ON DATABASE gitlab TO gitlab;
+                                </p>
+                            </div>
+                        </div>
+                        <br>
+                        <p>
+                            Ingresa el comando para salir de la consola de Postgresql.
+                        </p>
+                        <div class="consola">
+                            <div class="cabecera"></div>
+                            <div class="comando">
+                                <div class="peso">$</div>
+                                <p>
+                                    \q
+                                </p>
+                            </div>
+                        </div>
+                        <br>
+                        <p>
+                            Reinicia Postgresql.
+                        </p>
+                        <div class="consola">
+                            <div class="cabecera"></div>
+                            <div class="comando">
+                                <div class="peso">$</div>
+                                <p>
+                                    sudo service postgresql restart
+                                </p>
+                            </div>
+                        </div>
+                        <br>
+
+                        <h3 id="reconfig">Reconfiguración de Gitlab para la conexión</h3>
+                        <p>
+                            Vuelve al servidor Gitlab y accede a su archivo de configuración.
+                        </p>
+                        <div class="consola">
+                            <div class="cabecera"></div>
+                            <div class="comando">
+                                <div class="peso">$</div>
+                                <p>
+                                    sudo nano /etc/gitlab/gitlab.rb
+                                </p>
+                            </div>
+                        </div>
+                        <br>
+                        <p>
+                            Presiona las teclas <b>CTRL+W</b> y escribe <b>gitlab_rails['db_adapter']</b> y
+                            presiona enter.
+                        </p>
+                        <img src="/3rb.png" alt="" class="pasopaso">
+                        <p>
+                            Descomenta todas las líneas que ves en la imagen, y cambia los datos según
+                            corresponda.
+                        </p>
+                        <ul>
+                            <li>
+                                En 'db_database' debes poner el nombre de la base de datos que creaste en el servidor
+                                Postgresql.
+                            </li>
+                            <li>
+                                En 'db_username' y 'db_password' debes poner el nombre de usuario y contraseña
+                                del usuario gitlab del servidor Postgresql.
+                            </li>
+                            <li>
+                                El 'db_host' es la dirección IP o dominio del servidor Postgresql.
+                            </li>
+                            <li>
+                                y por último, 'db_port' es el puerto del servidor Postgresql.
+                            </li>
+                        </ul>
+                        <p>
+                            Presiona <b>CTRL+O</b> enter, y <b>CTRL+X</b> enter para salir del archivo.
+                        </p>
+                        <p>
+                            Realiza una prueba de conexión con el servidor Postgresql ingresando el siguiente comando,
+                            seguido de la contraseña.
+                        </p>
+                        <img src="/13.png" alt="" class="pasopaso">
+                        <br><br>
+                        <div class="consola">
+                            <div class="cabecera"></div>
+                            <div class="comando">
+                                <div class="peso">$</div>
+                                <p>
+                                    psql -U gitlab -W -h ip_servidor_postgresql
+                                </p>
+                            </div>
+                        </div>
+                        <br>
+                        <p>
+                            Si has seguido todos los pasos correctamente debería estar funcionando todo.
+                        </p>
+                        <div class="alerta">
+                            Es muy importante que primero siembres la estructura, y tablas de la base de datos de Gitlab
+                            para poder hacer la conexión con el servidor Postgresql. ¡OJO! que este paso es destructivo,
+                            por lo que si tienes registros ya creados debes crear un backup, copiarlo al servidor
+                            Postgresql
+                            para despues restaurar la base de datos sin perder registros.
+                        </div>
+                        <br>
+                        <p>
+                            Escribe el comando, y escribes <b>yes</b>.
+                        </p>
+                        <img src="/20.png" alt="" class="pasopaso">
+                        <br><br>
+                        <div class="consola">
+                            <div class="cabecera"></div>
+                            <div class="comando">
+                                <div class="peso">$</div>
+                                <p>
+                                    sudo gitlab-rake gitlab:setup
+                                </p>
+                            </div>
+                        </div>
+                        <br>
+                        <p>
+                            Vuelve a reconfigurar Gitlab para que los nuevos cambios se actualicen.
+                        </p>
+                        <div class="consola">
+                            <div class="cabecera"></div>
+                            <div class="comando">
+                                <div class="peso">$</div>
+                                <p>
+                                    sudo gitlab-ctl reconfigure
+                                </p>
+                            </div>
+                        </div>
+                        <img class="pasopaso" src="/14.png" alt="">
+                        <p>
+                            No se preocupe si le aparece este error. Es normal, debido a que la IP o dominio que se le
+                            agregó
+                            en el archivo de configuración de Gitlab <b>https://192.178.1.100</b> ya tenía un
+                            certificado letsencrypt.
+                        </p>
+                        <img src="/21.png" alt="" class="pasopaso">
+                        <p>
+                            Ingresa a la consola de Gitlab. Despues de acceder, ingresa los siguientes
+                            comandos <b>todos al mismo tiempo</b> y presiona enter para cambiar la contraseña de Gitlab.
+                        </p>
+                        <p>
+                            Asegúrate de poner una constraseña segura <b>TuContraseña123@</b> porque de lo contrario
+                            saldrá un error en este paso.
+                        </p>
+                        <img src="/22.png" alt="" class="pasopaso">
+                        <div class="consola">
+                            <div class="cabecera"></div>
+                            <div class="comando">
+                                <div class="peso">$</div>
+                                <p>
+                                    sudo gitlab-rails console
+                                </p>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="consola consolaMultiplesLineas">
+                            <div class="cabecera"></div>
+                            <div class="comando">
+                                <div class="peso">$</div>
+                                <p>
+                                    user = User.where(id: 1).first <br>
+                                    user.password = 'new-password-here' <br>
+                                    user.password_confirmation = 'new-password-here' <br>
+                                    user.save!
+                                </p>
+                            </div>
+                        </div>
+                        <br>
+                        <p>
+                            Presiona <b>CTRL+C</b> para salir de la consola.
+                        </p>
+                        <p>
+                            Una vez terminado esto, ya puedes iniciar sesión exitosamente, teniendo Gitlab en un
+                            servidor
+                            y su base de datos Postgresql en otro servidor diferente.
+                        </p>
+                        <img src="/23.png" alt="" class="pasopaso">
+                        <p>
+                            Note el error que apareció cuando intenté ingresar con la antigua contraseña. (En la captura
+                            ya había ingresado mis nuevas credenciales)
+                            Ingresa las credenciales y accede nuevamente. Dentro podrás configurar llaves SSH para tus
+                            repositorios,
+                            cambiar el nombre de usuario root, entre muchas cosas mas.
+                        </p>
+                        <br>
+                        <h4>
+                            ¡Esto ha sido todo por esta guía!
+                        </h4>
+                        <br>
+                        <h3>Contacta a los desarrolladores para ofrecerles trabajo</h3>
+                        <br><br><br><br><br>
+                    </div>
+                </div>
+
+            </div>
+
+            <!---------------FIN TUTORIAL----------------->
+
+
+            <!---------------TEMAS POPULARES----------------->
+            <div class="col col-2">
+                <div class="card temasPopulares">
+                    <div class="card-body">
+                        <!-- <h3>Desarrolladores</h3> -->
+                        <span class="typed" style="width: auto; display: inline-block;"></span>
+                    </div>
+                </div>
+            </div>
+            <img class="imagen-scroll" src="/linux-removebg-preview.png" alt="">
+            <!---------------FIN TEMAS POPULARES----------------->
+        </div>
+        <br>
+        <br>
+        <div class="row row-4">
+            <div class="col col-3 footer text-center d-flex align-items-center">
+                <div class="card cardFooter">
+                    <div class="card-body">
+                        <h5>Redes Solciales</h5>
+                        <br>
+                        <ul class="list-group list-group-flush">
+                            <div class="row row-2">
+                                <div class="col col-3 text-center d-flex align-items-center">
+                                    <i class="fa-brands fa-whatsapp"></i>
+                                </div>
+                                <div class="col col-6 d-flex">
+                                    Whatsapp
+                                </div>
+                            </div>
+                            <div class="row row-2">
+                                <div class="col col-2 text-center d-flex align-items-center">
+                                    <i class="fa-regular fa-envelope"></i>
+                                </div>
+                                <div class="col col-6">
+                                    Correo
+                                </div>
+                            </div>
+                            <div class="row row-2">
+                                <div class="col col-2 text-center d-flex align-items-center">
+                                    <Yo class="fa-brands fa-github"></Yo>
+                                </div>
+                                <div class="col col-6">
+                                    Github
+                                </div>
+                            </div>
+                            <div class="row row-2">
+                                <div class="col col-2 text-center d-flex align-items-center">
+                                    <i class="fa-brands fa-gitlab"></i>
+                                </div>
+                                <div class="col col-6">
+                                    Gitlab
+                                </div>
+                            </div>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col col-3 footer ">
+                <div class="card cardFooter">
+                    <div class="card-body">
+                        <h5>Productos</h5>
+                        <br>
+                        <ul class="listaFooter">
+                            <li class="">Descripción general de los productos</li>
+                            <li class="">Postfix</li>
+                            <li class="">Lets Encrypt</li>
+                            <li class="">OpenSSH-server</li>
+                            <li class="">Omnibus Linux</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col col-3 footer">
+                <div class="card cardFooter">
+                    <div class="card-body">
+                        <h5>Comunidad</h5>
+                        <br>
+                        <ul class="listaFooter">
+                            <li class="">Instalación de gitlab-ce</li>
+                            <li class="">Postgresql NO empaquetado</li>
+                            <li class="">HTML</li>
+                            <li class="">CSS</li>
+                            <li class="">Ubuntu-server</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col col-3 footer">
+                <div class="card cardFooter">
+                    <div class="card-body">
+                        <h5>Soluciones</h5>
+                        <br>
+                        <ul class="listaFooter">
+                            <li class="">Alojamiento de páginas web</li>
+                            <li class="">Alojamiento VPS</li>
+                            <li class="">Aplicaciones web y móviles</li>
+                            <li class="">Cifrado de extremo a extremo</li>
+                            <li class="">Docker</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+    <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+
+    <script>
+        window.addEventListener('scroll', function () {
+            var body = document.body;
+            var html = document.documentElement;
+
+            var scrolled = body.scrollTop > 90 || html.scrollTop > 90;
+
+            if (scrolled) {
+                body.classList.add('scrolled');
+            } else {
+                body.classList.remove('scrolled');
+            }
+        });
+    </script>
+
+    <script src="/script.js"></script>
+
+</body>
+
+</html>

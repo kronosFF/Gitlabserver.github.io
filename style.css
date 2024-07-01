@@ -1,0 +1,284 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Amaranth:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display:wght@400..900&family=Quicksand:wght@300..700&family=Trocchi&display=swap');
+
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-color: #fafafc;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+a{
+    text-decoration: none;
+    color: #5e5a94;
+}
+
+a:hover{
+   color: black;
+}
+
+.linux{
+    color: black;
+}
+
+.title{
+    background-image: linear-gradient(to left, rgba(255,0,0,0), #5e5a94);;
+    border-radius: 5px;
+    position: sticky;
+}
+
+.publicity{
+    background-image: linear-gradient(to left, rgba(255,0,0,0), #5e5a94);;
+    display: flex;
+    border-radius: 5px;
+    justify-content: center;
+    align-items: center;
+}
+
+h1, h2, h3, h4, h5, h6{
+    font-family: 'Playfair';
+    font-weight: 700;
+}
+
+p{
+    font-family: 'Quicksand';
+}
+
+li{
+    font-family: 'Quicksand';
+}
+
+.information{
+    text-align: center;
+    width: 253px;
+    padding-top: 10px;
+    letter-spacing: 3px;
+    /* background-color: rgb(230, 114, 12); */
+    background-image: linear-gradient(to left, rgb(230, 114, 12), rgb(243, 183, 131));
+    border-radius: 10px;
+}
+
+.information a {
+    color: #edecf3;
+}
+
+.elements{
+    margin: 15px;
+}
+
+.buttonInscribete{
+    border-radius: 5px;
+    color: white;
+    background-color: #0e6802;
+    width: 120px;
+    height: 45px;
+    font-family: 'Quicksand';
+}
+
+.buttonInscribete:hover{
+    border: 2px solid #ff6b00;
+    color: #5e5a94;
+    background-color: #fafafc;
+    font-family: 'Quicksand';
+}
+
+.card{
+    box-shadow: 5px 5px 10px #edecf3;
+    border-radius: 10px;
+}
+
+.cardFooter{
+    width: 100%;
+    height: 100%;
+    background-color: #5e5a94;
+    color: #fafafc;
+}
+
+.listaFooter{
+    border-radius: 5px;
+}
+
+h5{
+    text-align: center;
+}
+
+.button{
+    box-shadow: 5px 5px 10px #edecf3;
+    border-radius: 5px;
+    height: 40px;
+    width: 122px;
+    background-color: #5e5a94;
+    color: white;
+    font-family: 'Quicksand';
+}
+
+.button:hover{
+    color: #5e5a94;
+    border: 2px solid #5e5a94;
+    background-color: #edecf3;
+}
+
+.logo{
+    width: 90px;
+    height: 90px;
+    margin-top: 10px;
+}
+
+.logoContainer{
+    display: flex;
+}
+
+.footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.alerta{
+    background-color: #ff6b00;
+    color: #fafafc;
+    border-radius: 10px;
+    padding: 10px;
+    margin-left: 250px;
+}
+
+@keyframes show{
+    from{
+        opacity: 0;
+        scale: 25%;
+    }
+
+    to{
+        opacity: 1;
+        scale: 100%;
+    }
+}
+
+
+
+.pasopaso{
+    border-radius: 5px;
+    margin: 10px;
+    box-shadow: 5px 5px 10px #edecf3;
+    width: 90%;
+    /* width: 100%;
+    height: auto;
+
+    view-timeline-name: --image;
+    view-timeline-axis: block;
+
+    animation-timeline: --image;
+    animation-name: show;
+
+    animation-range: entry 25% cover 30%;
+    animation-fill-mode: both; */
+}
+
+.consola{
+    border-radius: 5px;
+    display: flex;
+    align-items: start;
+    justify-content: left;
+    flex-direction: column;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, #fafafc 0px 2px 4px -1px;
+}
+
+.cabecera{
+    height: 40px;
+    width: 100%;
+    background-color: rgb(69, 77, 99);
+    border-radius: 5px 5px 0px 0px;
+}
+
+.comando{
+    
+    padding: 5px;
+    height: 100%;
+    width: 100%;
+    background-color: rgb(42, 43, 50);
+    color: #fafafc;
+    border-radius: 0px 0px 5px 5px ;
+    display: flex;
+}
+
+.comando p{
+    margin-left: 20px;
+}
+
+.comando div{
+    margin-left: 10px;
+    color: #ff9c55;
+}
+
+.contenedor{
+    display: flex;
+    height: 100vh;
+}
+
+.contenido{
+    flex: 1;
+    position: fixed;
+    width: 20%;
+    height: 480px;
+    overflow-y: scroll;
+    scrollbar-color: #a3a3c4 #5e5a94;
+}
+
+.contenidoGitlab{
+    max-height: 380px;
+    transition: all 1s ease;
+}
+
+.scrolled .contenidoGitlab {
+    max-height: 510px;
+    transform: translateY(-110px);
+    transition: all 1s ease; 
+}
+
+
+.tutorial{
+    flex: 2;
+    overflow-y: auto;
+}
+
+.temasPopulares{
+    flex: 1;
+    position: fixed;
+    width: 210px;
+    height: 380px;
+}
+
+
+.imagen-scroll {
+    top: 100px;
+    right: 100px;
+    display: none;
+    transition: all 3s ease-in-out;
+    width: 200px;
+    height: 200px;
+    position: fixed;
+
+}
+
+.scrolled .imagen-scroll {
+    transition: all 3s ease-in-out;
+    display: block;
+}
+
+.h4Typed{
+    text-align: center;
+}
+
+
+
+
+
